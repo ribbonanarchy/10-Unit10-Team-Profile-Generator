@@ -7,6 +7,18 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
 const empArray = [];
+let HTMLstring = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Team</title>
+    <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+    <h1>Your Team</h1>
+    <div id="container">`;
 
 const initQ = [
     {
@@ -120,8 +132,33 @@ const initialize = () => {
     });
 }
 
+const generateHTML = (empArray) => {
+    empArray.forEach((employee) => {
+        HTMLstring += `\n \n<div class="card">
+            <b>${employee.name}</b> <br>
+            Role: ${employee.getRole()} <br>
+            Email: ${employee.email} <br>`;
+        switch(employee.getRole()) {
+            case 'Engineer': 
+                HTMLstring += `Github: ${employee.github} <br></div>`;
+                break;
+            case 'Intern':
+                HTMLstring += `School: ${employee.school} <br></div>`;
+                break;
+            case 'Manager':
+                HTMLstring += `Office Number: ${employee.officeNumber} <br></div>`;
+                break;
+        }
+    });
+
+    HTMLstring += `   </div>
+    </body>
+    </html>`;
+}
+
 const outputToFile = () => {
-    fs.writeFileSync('test.txt', 'test test potatoes test', 'utf-8');
+    generateHTML(empArray);
+    fs.writeFileSync('index.html', HTMLstring, 'utf-8');
 }
 
 initialize();

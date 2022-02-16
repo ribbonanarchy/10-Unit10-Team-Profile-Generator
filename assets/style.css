@@ -1,0 +1,22 @@
+* {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: indianred;
+    color: aliceblue;
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: aliceblue;
+    color: crimson;
+    margin: 10px;
+    padding: 5px;
+}
