@@ -98,7 +98,7 @@ const managerQ = [
 const initialize = () => {
     return inquirer.prompt(initQ)
     .then(choice => {
-        console.log(choice);
+        // console.log(choice);
         switch(choice.job) {
             case 'Engineer': 
                 return inquirer.prompt(engineerQ)
@@ -128,7 +128,7 @@ const initialize = () => {
                 outputToFile();
                 break;
         }
-        console.log(empArray);
+        // console.log(empArray);
     });
 }
 
